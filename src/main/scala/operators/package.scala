@@ -2,7 +2,7 @@ package object operators {
   def not(x: Boolean): Boolean = if (x) false else true
 
   def and(x: Boolean, y: Boolean): Boolean =
-    if (x == true) if (y == true) true else false else false
+    if (x) if (y) true else false else false
 
   def or(x: Boolean, y: Boolean): Boolean =
     if (x) true else if (y) true else false
