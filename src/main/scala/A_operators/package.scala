@@ -1,4 +1,4 @@
-package object operators {
+package object A_operators {
   def not(x: Boolean): Boolean = if (x) false else true
 
   def and(x: Boolean, y: Boolean): Boolean =
