@@ -2,9 +2,9 @@ import scala.annotation.tailrec
 
 package object B_sqrt_recurs {
   //Using Newton's Method
-  private val err = 1E-15;
+  private val err = 1E-15
 
-  def sqrt(x: Double): Double = computeAndCheckRecursively(x, x);
+  def sqrt(x: Double): Double = computeAndCheckRecursively(x, x)
 
   @tailrec
   private def computeAndCheckRecursively(x: Double, current_approx: Double): Double =
