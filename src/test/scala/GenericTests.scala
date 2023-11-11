@@ -1,4 +1,4 @@
-import HOF.{factorial_HOF, gen, sum, sumFactorials, sumInts, sumSquares, sum_HOF, sum_HOF_tailRec, sum_generated}
+import HOF.{factorial_HOF, gen, prod_generated, product, sum, sumFactorials, sumInts, sumSquares, sum_HOF, sum_HOF_tailRec, sum_generated}
 import factorial.{fact, fact_iter}
 import fibonacci.{fib, fibIter}
 import gcd.gcd
@@ -49,6 +49,7 @@ class GenericTests extends AnyFunSuite {
     assert(factorial_HOF(6) == 720);
     assert(factorial_HOF(8) == 40320);
     assert(sumInts(1, 10) == sum_generated(1, 10));
+    assert(product(x=>x)(1, 10) == prod_generated(1, 10));
 
   }
 }

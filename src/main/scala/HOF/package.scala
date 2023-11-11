@@ -5,18 +5,20 @@ import scala.annotation.tailrec
 package object HOF {
 
   def sum_generated: (Int, Int) => Int =
-    gen(((a, b) => a + b), x => x)
+    gen((a, b) => a + b)(x => x)
 
-  def gen(op: (Int, Int) => Int, f: Int => Int): (Int, Int) => Int = {
-    def generate(a: Int, b: Int): Int =
-      if (a > b) 0 else op(f(a), generate(a + 1, b))
+  def prod_generated: (Int, Int) => Int =
+    gen((a, b) => a * b)(x => x)
 
-    generate
+  def gen(op: (Int, Int) => Int)(f: Int => Int)(a: Int, b: Int): Int = { //currying
+
+    if (a > b) if (op(1, 1) == 1) 1 else 0 else op(f(a), gen(op)(f)(a + 1, b))
+
   }
 
   def sumInts: (Int, Int) => Int = sum(x => x)
 
-  def sum(f: Int => Int): (Int, Int) => Int = { //currying
+  def sum(f: Int => Int): (Int, Int) => Int = {
     def sumF(a: Int, b: Int): Int =
       if (a > b) 0 else f(a) + sumF(a + 1, b)
 
@@ -24,14 +26,12 @@ package object HOF {
   }
 
   def factorial_HOF(a: Int): Int = {
-    product(x => x)(1, a);
+    product(x => x)(1, a)
   }
 
-  def product(f: Int => Int): (Int, Int) => Int = { //currying
-    def prodF(a: Int, b: Int): Int =
-      if (a > b) 1 else f(a) * prodF(a + 1, b)
+  def product(f: Int => Int)(a: Int, b: Int): Int = {
+    if (a > b) 1 else f(a) * product(f)(a + 1, b)
 
-    prodF
   }
 
   def sumSquares(a: Int, b: Int): Int =
