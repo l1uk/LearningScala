@@ -17,7 +17,7 @@ package object sqrt {
     computeAndCheckRecursively(x)
   }
 
-  private def abs(x: Double) = if (x < 0) x * (-1) else x
+  def abs(x: Double): Double = if (x < 0) x * (-1) else x
 
 
 }

@@ -52,4 +52,7 @@ class GenericTests extends AnyFunSuite {
     assert(product(x=>x)(1, 10) == prod_generated(1, 10))
 
   }
+  test("Testing Rational Class"){
+
+  }
 }
