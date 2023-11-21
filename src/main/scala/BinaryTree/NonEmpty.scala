@@ -12,19 +12,15 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
 
   override def union(other: IntSet): IntSet = ((left union right) union other).add(elem)
 
-  override def remove(x: Int): IntSet = if (x < elem) new NonEmpty(elem, left remove x, right) else if (x > elem) new NonEmpty(elem, left, right remove x)
-  else {
-    if (right == Empty && left == Empty)
-      Empty
-    else if (right == Empty && left != Empty)
-      new NonEmpty(left.getValue, Empty, Empty)
-    else if (right != Empty && left == Empty)
-      new NonEmpty(right.getValue, Empty, Empty)
-    else
-      new NonEmpty(left.max().getValue, left remove left.max().getValue, right)
-  }
+  override def remove(x: Int): IntSet =
+    if (x < elem) left remove x else if (x > elem) right remove x else left union right
 
-  override def intersec(other: IntSet): IntSet = ???
+
+  override def intersec(other: IntSet): IntSet =
+    if (other contains elem)
+      new NonEmpty(elem, left intersec other, right intersec other)
+    else
+      (left intersec other) union (right intersec other)
 
   override def max(): IntSet = if (right != Empty) right.max() else this
 

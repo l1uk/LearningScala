@@ -18,7 +18,7 @@ object Main {
     println(sos)
     println(sos remove 5)
     println("...")
-    println(d)
+    println(sos intersec d)
     println(d remove 12)
     println((d remove 12) remove 22)
     println(d.max())
