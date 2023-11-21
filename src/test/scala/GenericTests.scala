@@ -3,6 +3,7 @@ import factorial.{fact, fact_iter}
 import fibonacci.{fib, fibIter}
 import gcd.gcd
 import logical_operators.xor
+import BinaryTree.Empty
 import sqrt.sqrt
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -49,10 +50,30 @@ class GenericTests extends AnyFunSuite {
     assert(factorial_HOF(6) == 720)
     assert(factorial_HOF(8) == 40320)
     assert(sumInts(1, 10) == sum_generated(1, 10))
-    assert(product(x=>x)(1, 10) == prod_generated(1, 10))
+    assert(product(x => x)(1, 10) == prod_generated(1, 10))
 
   }
-  test("Testing Rational Class"){
-
+  test("Testing Rational Class") {
+    val n1 = new Rational(2)
+    val n2 = new Rational(2, 4)
+    assert(n1 + n2 < n1)
+    assert(n1.max(n2) == n1)
+  }
+  test("Testing BST and Sets") {
+    val a = Empty.add(12)
+    val b = a.add(15)
+    val c = b.add(7)
+    val d = c.add(22).add(5).add(6)
+    val e = Empty.add(122)
+    val f = e.add(152)
+    val g = f.add(72)
+    val h = g.add(222)
+    assert(!(h contains 12))
+    assert(d contains 12)
+    assert(!((d remove 12) contains 12))
+    assert((d union h) contains 12)
+    assert((Empty intersec a) == Empty)
+    assert((Empty remove 12) == Empty)
+    assert((d remove 12).contains(5) && (d remove 12).contains(6) && (d remove 12).contains(22))
   }
 }
