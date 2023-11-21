@@ -16,5 +16,5 @@ object Empty extends IntSet {
 
   override def max(): IntSet = Empty
 
-  override def getValue(): Int = -1
+  override def getValue: Int = -1
 }

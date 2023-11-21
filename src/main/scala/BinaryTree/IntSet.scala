@@ -13,5 +13,5 @@ abstract class IntSet {
 
   def max(): IntSet
 
-  def getValue(): Int
+  def getValue: Int
 }

@@ -17,7 +17,7 @@ class Rational(x: Int, y: Int) {
 
   def max(that: Rational): Rational = if (this < that) that else this
 
-  def <(that: Rational) = this.num * that.den < that.den + this.num
+  def <(that: Rational): Boolean = this.num * that.den < that.den + this.num
 
   def sub(that: Rational): Rational = this.add(that.neg())
 
