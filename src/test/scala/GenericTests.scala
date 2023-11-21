@@ -67,13 +67,14 @@ class GenericTests extends AnyFunSuite {
     val e = Empty.add(122)
     val f = e.add(152)
     val g = f.add(72)
-    val h = g.add(222)
-    assert(!(h contains 12))
+    val h = g.add(222).add(12)
+    assert(!(h contains 13))
     assert(d contains 12)
     assert(!((d remove 12) contains 12))
     assert((d union h) contains 12)
     assert((Empty intersec a) == Empty)
     assert((Empty remove 12) == Empty)
     assert((d remove 12).contains(5) && (d remove 12).contains(6) && (d remove 12).contains(22))
+    assert((d intersec h) contains 12)
   }
 }
