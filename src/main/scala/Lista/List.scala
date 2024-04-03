@@ -1,7 +1,8 @@
+package Lista
 
 
+trait List[+T] {
 
-trait List[T] {
   def isEmpty: Boolean
 
   def head: T
@@ -28,7 +29,7 @@ trait List[T] {
 
   def suffix(n: Int): List[T] = {
     if (len < n)
-      new Nil[T]
+      Nil
     else if (len == n)
       this
     else
@@ -43,25 +44,9 @@ trait List[T] {
 
   }
 
-  private def singleton[RT](elem: RT): List[RT] = new Cons[RT](elem, new Nil[RT])
+  private def singleton[T](elem: T): List[T] = new Cons[T](elem, Nil)
   //def prefix(n: Int): List[T] = {
   //if (n >= len) this
 
   //}
-}
-
-class Cons[T](val head: T, val tail: List[T]) extends List[T] {
-  def isEmpty: Boolean = false
-
-  override def len: Int = tail.len + 1
-}
-
-class Nil[T] extends List[T] {
-  override def isEmpty: Boolean = true
-
-  override def head: T = throw new NoSuchElementException("Nil.head")
-
-  override def tail: List[T] = throw new NoSuchElementException("Nil.tail")
-
-  override def len: Int = 0
 }
