@@ -1,2 +1,2 @@
 # LearningScala
-Scala exercises and fun things.
+Code developed during functional programming course. Scala implementation and relative test cases.
